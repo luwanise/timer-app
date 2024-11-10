@@ -10,8 +10,8 @@ A simple timer app created for practice that allows you to set a countdown and t
 ## Screenshots
 
 <div align="center">
-  <img src="assets/screenshots/start timer.jpg" alt="Start Timer" width="45%" style="display: inline-block; margin: 10px;">
-  <img src="assets/screenshots/timer running.jpg" alt="Timer Running" width="45%" style="display: inline-block; margin: 10px;">
+  <img src="assets/screenshots/start timer.jpg" alt="Start Timer" width="45%" style="display: inline-block; margin: 20px;">
+  <img src="assets/screenshots/timer running.jpg" alt="Timer Running" width="45%" style="display: inline-block; margin: 20px;">
 </div>
 
 ## Installation
