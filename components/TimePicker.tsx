@@ -3,12 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import { Colors } from "@/constants/Colors";
 
-export default function TimePicker() {
-    const [selectedMinute, setSelectedMinute] = useState(0);
-    const [selectedSecond, setSelectedSecond] = useState(0);
+interface TimePickerProps {
+    onMinuteChange: (minute: number) => void
+    onSecondChange: (second: number) => void
+}
 
-    const minutes = Array.from({ length: 60 }, (_, i) => `  ${String(i).padStart(2, '0')}  `);
-    const seconds = Array.from({ length: 60 }, (_, i) => `  ${String(i).padStart(2, '0')}  `);
+export default function TimePicker({ onMinuteChange, onSecondChange }: TimePickerProps) {
+
+    const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
+    const seconds = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
 
     return (
         <View style={styles.container}>
@@ -16,20 +19,20 @@ export default function TimePicker() {
             <View style={styles.pickerContainer}>
                 <ScrollPicker
                     dataSource={minutes}
-                    selectedIndex={selectedMinute}
-                    renderItem={(data, index) => (
+                    selectedIndex={0}
+                    renderItem={(minute, _, isSelected) => (
                         <View>
                             <Text
                                 style={[
                                     styles.scrollItem,
-                                    index !== selectedMinute && styles.fadedItem,
+                                    !isSelected && styles.fadedItem
                                 ]}
                             >
-                                {data}
+                                {minute}
                             </Text>
                         </View>
                     )}
-                    onValueChange={(_, selectedIndex) => setSelectedMinute(selectedIndex)}
+                    onValueChange={(minute, _) => onMinuteChange(Number(minute))}
                     wrapperHeight={180}
                     wrapperBackground={Colors.background}
                     itemHeight={60}
@@ -43,20 +46,20 @@ export default function TimePicker() {
             <View style={styles.pickerContainer}>
                 <ScrollPicker
                     dataSource={seconds}
-                    selectedIndex={selectedSecond}
-                    renderItem={(data, index) => (
+                    selectedIndex={0}
+                    renderItem={(second, _, isSelected) => (
                         <View>
                             <Text
                                 style={[
                                     styles.scrollItem,
-                                    index !== selectedSecond && styles.fadedItem,
+                                    !isSelected && styles.fadedItem
                                 ]}
                             >
-                                {data}
+                                {second}
                             </Text>
                         </View>
                     )}
-                    onValueChange={(_, selectedIndex) => setSelectedSecond(selectedIndex)}
+                    onValueChange={(second, _) => onSecondChange(Number(second))}
                     wrapperHeight={180}
                     wrapperBackground={Colors.background}
                     itemHeight={60}
@@ -71,7 +74,6 @@ export default function TimePicker() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",

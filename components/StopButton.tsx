@@ -3,17 +3,12 @@ import { Link, useNavigation } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-interface StartButtonProps {
-    minutes: number;
-    seconds: number;
-}
-
-export default function StartButton({ minutes, seconds}: StartButtonProps) {
+export default function StartButton() {
     return (
         <View style={styles.container}>
-            <Link href={`/timerRunning?min=${minutes}&sec=${seconds}`} asChild>
+            <Link href={"/"} asChild>
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.text}>Start</Text>
+                    <Text style={styles.text}>Stop</Text>
                 </TouchableOpacity>
             </Link>
         </View>
@@ -28,12 +23,12 @@ const styles = StyleSheet.create({
         height: 200,
         borderRadius: 100,
         borderWidth: 4,
-        borderColor: Colors.primary,
+        borderColor: Colors.secondary,
         alignItems: 'center',
         justifyContent: 'center'
     },
     text: {
-        color: Colors.primary,
+        color: Colors.secondary,
         fontSize: 40,
     }
 })
