@@ -1,50 +1,61 @@
-# Welcome to your Expo app 👋
+# Timer App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple timer app created for practice that allows you to set a countdown and track time for various tasks. It provides a clean and user-friendly interface for easy time management.
 
-## Get started
+## Features
+- **Customizable Timer**: Set the timer duration based on your needs.
+- **Countdown Display**: View the countdown as the timer progresses.
+- **Simple Interface**: Intuitive and easy-to-use design for quick access.
 
-1. Install dependencies
+## Screenshots
 
+<div align="center">
+  <img src="assets/screenshots/start timer.jpg" alt="Start Timer" width="45%" style="display: inline-block; margin: 10px;">
+  <img src="assets/screenshots/timer running.jpg" alt="Timer Running" width="45%" style="display: inline-block; margin: 10px;">
+</div>
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/luwanise/timer-app.git
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd timer-app
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+   or for yarn users:
    ```bash
-    npx expo start
+   yarn install
+   ```
+4. Run the app:
+   ```bash
+   npm start
+   ```
+   or
+   ```bash
+   yarn start
    ```
 
-In the output, you'll find options to open the app in a
+## Usage
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. Open the app.
+2. Set your desired timer duration.
+3. Click "Start" to begin the countdown.
+4. The countdown will display and update until the timer finishes.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Technologies Used
 
-## Get a fresh project
+- React
 
-When you're ready, run:
+## Contributing
 
-```bash
-npm run reset-project
-```
+Feel free to fork the repository and submit pull requests if you'd like to contribute. Please ensure that your code adheres to the project's style guide.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## License
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
