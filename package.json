@@ -38,7 +38,9 @@
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.10",
     "react-native-wheel-picker-expo": "^0.5.4",
-    "react-native-wheel-scrollview-picker": "^2.0.6"
+    "react-native-wheel-scrollview-picker": "^2.0.6",
+    "expo-notifications": "~0.28.19",
+    "expo-av": "~14.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

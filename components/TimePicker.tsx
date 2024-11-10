@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import ScrollPicker from "react-native-wheel-scrollview-picker";
 import { Colors } from "@/constants/Colors";

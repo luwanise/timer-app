@@ -1,9 +1,10 @@
 import StopButton from "@/components/StopButton"
 import { Colors } from "@/constants/Colors";
 import { useLocalSearchParams } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-
+import { Audio } from "expo-av";
+import { Sound } from "expo-av/build/Audio";
 
 export default function TimerRunning(){
     const { min, sec } = useLocalSearchParams<{min: string, sec: string}>()
@@ -11,18 +12,51 @@ export default function TimerRunning(){
     const [minutes, setMinutes] = useState(parseInt(min));
     const [seconds, setSeconds] = useState(parseInt(sec));
 
-    const startTimer = () => {
-        if (seconds > 0){
-            setTimeout(() => { setSeconds(seconds-1) }, 1000); // reduce seconds by one every second
-        } else {
-            if (minutes > 0){
-                setMinutes(minutes-1);
-                setSeconds(59);
-            }
-        }
+    const [sound, setSound] = useState<Sound>();
+
+    async function playAlarm() {
+        const { sound } = await Audio.Sound.createAsync( require('../assets/audio/alarm.mp3'));
+        setSound(sound);
+
+        await sound.playAsync();
     }
 
-    startTimer();
+    async function stopAlarm() {
+        await sound?.pauseAsync();
+    }
+
+    useEffect(() => {
+        return sound
+          ? () => {
+              sound.unloadAsync();
+            }
+          : undefined;
+      }, [sound]);
+
+    useEffect(() => {
+        if (minutes === 0 && seconds === 0){
+            // play alarm
+            playAlarm();
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            if (seconds > 0){
+                setSeconds(seconds-1); // reduce seconds by one every second
+            } else if (minutes > 0){
+                setSeconds(59);
+                setMinutes(minutes-1);
+            }
+        }, 1000);
+
+        return () => clearTimeout(timer)
+    }, [minutes, seconds]);
+
+    const resetTimer = () => {
+        setMinutes(parseInt(min));
+        setSeconds(parseInt(sec));
+        stopAlarm();
+    }
 
     return(
         <View style={styles.container}>
@@ -32,7 +66,7 @@ export default function TimerRunning(){
                 <Text style={styles.timerText}>{String(seconds).padStart(2, '0')}</Text>
             </View>
             <StopButton/>
-            <Text style={styles.reset}>Reset</Text>
+            <Text style={styles.reset} onPress={resetTimer}>Reset</Text>
         </View>
     );
 }
