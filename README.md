@@ -48,6 +48,9 @@ A simple timer app created for practice that allows you to set a countdown and t
 3. Click "Start" to begin the countdown.
 4. The countdown will display and update until the timer finishes.
 
+## Credit
+This app was inspired by [React Native Timer App by Juliette (Rapala) Russum](https://github.com/jrapala/react-native-timer).
+
 ## Technologies Used
 
 - React
